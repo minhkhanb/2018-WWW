@@ -1,0 +1,15 @@
+diff a/src/game/GamePlay/CGame_State.cpp b/src/game/GamePlay/CGame_State.cpp	(rejected hunks)
+@@ -660,9 +660,12 @@
+ 			{
+ 				PDEBUG("\n Show Tapdaq success");
+ 				_on_video_ads_reward = true;
+-				_is_waiting_for_reward = false;
+ 				game->_isAdsProcessing = false;
+ 			}
++			if (MAIN_GAME()->_current_state == k_GS_PLAYGAME)
++			{
++				MAIN_GAME()->SetState(k_GS_IGM);
++			}
+ 			game->_show_ads_interrupt = false;
+ 			break;
+ 		case PineTapdaqAsync::enumTapdaqUpdateResult::SHOW_ADS_SUCCESS:
